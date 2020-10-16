@@ -1,19 +1,29 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
     <style>
-     .removeBtn{
-       pointer-events: none;
-     }
+        .removeBtn {
+            pointer-events: none;
+        }
     </style>
-    
+
 </head>
+
 <body>
 
     <h3><span class="title">habit</span> tracker</h3>
+
+    <h2>
+        <div class="current-show">
+            <p id="date">
+                <p class="big-text" id="date"></p>
+            </p>
+        </div>
+    </h2>
 
     <div class="inputDiv">
         <table>
@@ -29,22 +39,22 @@
             </tr>
         </table>
 
-            <div class='items'>
+        <div class='items'>
 
-<!--section weeks-->
+            <!--section weeks-->
 
-              <div id="wrapper">
+            <div id="wrapper">
                 <h3>week section</h3>
                 <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
                 <button id="btn" class="btn">New week</button>
             </div>
 
-<!-- end section weeks-->
+            <!-- end section weeks-->
 
-                <ul class= 'habit-list'></ul>
+            <ul class='habit-list'></ul>
 
-                <div class='habits'>
-<!--
+            <div class='habits'>
+                <!--
                   <table>
                     <tr>
                       <th>item</th>
@@ -62,20 +72,39 @@
                   <button class='editBtn'>edit</button>
                   <button class='removeBtn'>remove</button>
         
--->             
-     
-                </div>
+-->
+
             </div>
+        </div>
 
-            <div class='input'>
-              <input type="text" name='habit-input'class="habit-input" placeholder="habits..">
-              
-              <button type='button' class="addBtn">add</button>
-            </div> 
+        <div class='input'>
+            <input type="text" name='habit-input' class="habit-input" placeholder="habits..">
 
-        </div>  
-        <div class='error hidden'>field cant be empty</div>
-    
+            <button type='button' class="addBtn">add</button>
+        </div>
+
+    </div>
+    <div class='error hidden'>field cant be empty</div>
+
+    <p>Add more: <input type="text" name="habit" placeholder="write new habit." required pattern="[a-zA-Z].+">
+
+        <select name="repeatednr" id="repeatednr">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>                   
+      </select>
+
+        <p>Pick Color: <input type="color" name="color" required></p>
+
+        <input type="button" value="Click to Add" onclick="alert('New Habit Added')"><br><br>
+        <input type="reset" value="Clear All">
+        <input type="submit" value="Submit">
+
+        <p>Check record: <input type="week" name="week" required></p>
 </body>
 
 <script src='habit-tracker.js'></script>
