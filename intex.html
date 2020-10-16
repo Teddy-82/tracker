@@ -4,12 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <style></style>
+    <style>
+     .removeBtn{
+       pointer-events: none;
+     }
+    </style>
     
 </head>
 <body>
 
-    <h3><span class="title">Todo</span>List</h3>
+    <h3><span class="title">habit</span> tracker</h3>
 
     <div class="inputDiv">
         <table>
@@ -26,10 +30,21 @@
         </table>
 
             <div class='items'>
+
+<!--section weeks-->
+
+              <div id="wrapper">
+                <h3>week section</h3>
+                <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
+                <button id="btn" class="btn">New week</button>
+            </div>
+
+<!-- end section weeks-->
+
                 <ul class= 'habit-list'></ul>
 
                 <div class='habits'>
-
+<!--
                   <table>
                     <tr>
                       <th>item</th>
@@ -46,9 +61,9 @@
                   <li></li>
                   <button class='editBtn'>edit</button>
                   <button class='removeBtn'>remove</button>
-
-                 
-                  
+        
+-->             
+     
                 </div>
             </div>
 
