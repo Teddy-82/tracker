@@ -15,7 +15,7 @@ const newWeek = document.querySelector('.btn')
 //event listeners
 addBtn.addEventListener('click', addHabit)
 habitList.addEventListener('click', deleteAction)
-newWeek.addEventListener('click', addWeek)
+
 
 
 
@@ -27,6 +27,8 @@ habitInput.addEventListener("keyup", addHabit)
    alert('ehue')
   }
 */
+
+
 
 function addHabit(event){
     //prevent form from submitting
@@ -42,6 +44,11 @@ function addHabit(event){
        
         const habitDiv = document.createElement('div')
         habitDiv.classList.add('habits')
+        
+        const trashHabit = document.createElement('button')
+        trashHabit.innerHTML = '<p class="removeBtn">-</p>'
+        trashHabit.classList.add('trash-btn')
+        habitDiv.appendChild(trashHabit)
 
         //create li
         const newHabit = document.createElement('li')
@@ -51,24 +58,22 @@ function addHabit(event){
 
         //check 
  
-        const trashHabit = document.createElement('button')
-        trashHabit.innerHTML = '<p class="removeBtn">remove</p>'
-        trashHabit.classList.add('trash-btn')
-        habitDiv.appendChild(trashHabit)
-    
+
 
         //edit
-        const editHabit = document.createElement('btn-edit');
+        const editHabit = document.createElement('button');
     	  editHabit.classList.add('edit-btn')
-        editHabit.innerHTML = '<button class="removeBtn">edit</button>'
+        editHabit.innerHTML = '<p class="editBtn">edit</p>'
         habitDiv.appendChild(editHabit)
-       
-
 
         //checkboxes adding using inner HTML
 
-        const checkHabit = document.createElement('table')
-        checkHabit.innerHTML = '<table><tr><th>item</th><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td><td><input type="checkbox"></td></tr></table>'
+        const checkHabit = document.createElement('row')
+        checkHabit.innerHTML = 
+        '<div class= "row rowcolor"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div><button class="check"></button><button class="check"></button>'
+
+
+        
         checkHabit.classList.add('table-check')
         habitDiv.appendChild(checkHabit)
 
@@ -95,6 +100,8 @@ function deleteAction(e) {
 }
 
 
+
+
 //function
 
 //list
@@ -103,22 +110,8 @@ function deleteAction(e) {
 
 
 
-function addWeek(x) {
-  const section = document.createElement('section');
-  section.setAttribute('id', 1);
-  document.getElementById('wrapper').appendChild(section); 
-  var h3 = document.createElement('h3');
-  h3.innerText = document.getElementById('sectionText').value;
-  section.appendChild(h3);
-  var input = document.createElement('INPUT');
-  input.setAttribute('type', 'text')
-  section.appendChild(input);
-  var btn = document.createElement('button');
-  btn.innerText = 'New List Item'
-  section.appendChild(btn);
-}
 
-/*
+
 var a = document.getElementById('btn');
 a.addEventListener('click', function() {
   var section = document.createElement('section');
@@ -131,7 +124,7 @@ a.addEventListener('click', function() {
   input.setAttribute('type', 'text')
   section.appendChild(input);
   var btn = document.createElement('button');
-  btn.innerText = 'New List Item'
+  btn.innerText = 'New habit'
   section.appendChild(btn);
 
   btn.addEventListener('click', function() {
@@ -145,7 +138,16 @@ a.addEventListener('click', function() {
     span.innerText = this.previousElementSibling.value;
     div.appendChild(span);
     input.parentNode.insertBefore(div, input);
+
+
+    const habitDiv = document.createElement('div')
+    habitDiv.setAttribute('class', 'listItem');
+    
+    const trashHabit = document.createElement('button')
+    trashHabit.setAttribute('type', 'button');
+    trashHabit.setAttribute('id', 'checker');
+    habitDiv.appendChild(trashHabit)
+
   }, false);
 })
 
-*/

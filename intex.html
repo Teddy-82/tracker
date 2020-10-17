@@ -1,50 +1,64 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/habit-tracker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
     <style>
-     .removeBtn{
-       pointer-events: none;
-     }
-    </style>
-    
-</head>
-<body>
 
-    <h3><span class="title">habit</span> tracker</h3>
+    </style>
+
+</head>
+
+<body>
+  <header>
+    <h3 class="title">habit tracker</h3>
+</header>
+
+    <h2>
+        <div class="current-show">
+            <p id="date">
+                <p class="big-text" id="date"></p>
+            </p>
+        </div>
+    </h2>
 
     <div class="inputDiv">
+
+                  <!--section weeks-->
+
+                  <div id="wrapper">
+                    <h3>week section</h3>
+                    <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
+                    <button id="btn" class="btn">New week</button>
+                </div>
+    
+                <!-- end section weeks-->
         <table>
             <tr>
-                <th>days</th>
-                <th>S</th>
-                <th>M</th>
-                <th>T</th>
-                <th>W</th>
-                <th>T</th>
-                <th>F</th>
-                <th>S</th>
+                <th class='table-habit'>Habit </th>
+                
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+                <td>Sun</td>
             </tr>
         </table>
 
-            <div class='items'>
+        <div class='items'>
 
-<!--section weeks-->
 
-              <div id="wrapper">
-                <h3>week section</h3>
-                <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
-                <button id="btn" class="btn">New week</button>
-            </div>
 
-<!-- end section weeks-->
+            <ul class='habit-list'></ul>
 
-                <ul class= 'habit-list'></ul>
-
-                <div class='habits'>
-<!--
+            <div class='habits'>
+                <!--
                   <table>
                     <tr>
                       <th>item</th>
@@ -57,25 +71,44 @@
                       <td><input type="checkbox"></td>
                     </tr>
                   </table>
-
                   <li></li>
                   <button class='editBtn'>edit</button>
                   <button class='removeBtn'>remove</button>
         
--->             
-     
-                </div>
+-->
+
             </div>
+        </div>
 
-            <div class='input'>
-              <input type="text" name='habit-input'class="habit-input" placeholder="habits..">
-              
-              <button type='button' class="addBtn">add</button>
-            </div> 
+        <form action="">
+        <div class='input'>
+            <input type="text" name='habit-input' class="habit-input" placeholder="habits..">
+            
+            <button type='button' class="addBtn">add</button>
+             <!--
+            <select name="repeatednr" id="repeatednr">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>                   
+          </select>
+-->
 
-        </div>  
-        <div class='error hidden'>field cant be empty</div>
-    
+
+          <input type="reset" value="Clear All">
+
+          <p>Pick Color: <input type="color" name="color" required></p>
+        </div>
+     
+    </div>
+    <div class='error hidden'>field cant be empty</div>
+   
+       
+
+</form>
 </body>
 
 <script src='habit-tracker.js'></script>

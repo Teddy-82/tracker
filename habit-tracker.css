@@ -1,0 +1,160 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+html {
+    background-color: rgb(74, 74, 74);
+    color: white;
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+}
+
+.removeBtn {
+    pointer-events: none;
+}
+
+
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    
+}
+
+header, form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+    text-transform: uppercase;
+    color: rgb(180, 177, 177);
+     
+    border-bottom: .2em solid gray;
+    table-layout: fixed;
+    width: 50%;
+    border-collapse: collapse;
+    
+    
+}
+
+table td {
+  
+    display: inline-block;
+    width: 10%;
+  
+    padding-bottom: 1em;
+
+}
+
+table .table-habit {
+    padding-bottom: 1em;
+    
+    font-size: 1.2rem;
+}
+
+
+.addBtn{
+    background-color: #8f8f8f;
+    border: none;
+    color: white;
+    padding: .4em .6em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+   
+    font-size: 1rem;
+    margin: 1em;
+    cursor: pointer;
+}
+
+.habit-input{
+   
+  width: 60%;
+  border: 0;
+  border-bottom: .1em solid gray;
+  outline: 0;
+  font-size: 1.3rem;
+  padding: .5em 0;
+  background: transparent;
+  color: rgb(255, 255, 255);
+  
+}
+
+:placeholder-shown{
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+input::placeholder {
+    color: rgb(53, 53, 53);
+  }
+
+.table-check{
+    border-bottom: none;
+   
+margin: 2em;
+    text-align: right;
+
+}
+
+.check{
+    margin: 2em;
+}
+
+.trash-btn{
+    display: inline-flex;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: rgb(125, 125, 125);
+    padding: .4em .6em;
+    
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    margin: .5em;
+    cursor: pointer;
+}
+
+
+
+.trash-btn,.habit-item, .table-check{
+    display: inline-flex;
+
+}
+
+
+.trash-btn{
+    margin-left: 12em;
+}
+
+
+.habits{
+    margin-right: 10em;
+}
+
+
+.hidden{
+    display: none;
+}
+
+
+
+.check {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: none;
+}
