@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="/habit-tracker.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
-    <style>
-
-    </style>
+ 
 
 </head>
 
@@ -37,7 +35,7 @@
                 </div>
     
                 <!-- end section weeks-->
-        <table>
+        <table class='table'>
             <tr>
                 <th class='table-habit'>Habit </th>
                 
@@ -82,9 +80,11 @@
 
         <form action="">
         <div class='input'>
-            <input type="text" name='habit-input' class="habit-input" placeholder="habits..">
+            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." >
             
             <button type='button' class="addBtn">add</button>
+            <div id="condition"></div>
+            
              <!--
             <select name="repeatednr" id="repeatednr">
               <option value="1">1</option>
@@ -98,7 +98,20 @@
 -->
 
 
-          <input type="reset" value="Clear All">
+          <input type="reset" value="Clear All" class='clear-all'>
+         
+          <!--counter-->
+          <div class="counter-box">
+       
+            <h1 class="counter">0</h1>
+            <div id="btns"></div>
+            <button type="button" class="btn" id="lowerCountBtn">Lower Count </button>
+            <button type="button" class="btn" id="addCountBtn">Add Count </button>
+        </div>
+         <!-- end counter-->
+
+          <progress value="0" max="100" id=p1>50%</progress>
+<input type=button value='Increse' onClick='incr();'>
 
           <p>Pick Color: <input type="color" name="color" required></p>
         </div>

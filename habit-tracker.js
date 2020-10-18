@@ -5,19 +5,41 @@ const habitInput = document.querySelector('.habit-input')
 const habitList = document.querySelector('.habit-list')
 const errorEmpty = document.querySelector('.error')
 const newWeek = document.querySelector('.btn')
+const clearAll = document.querySelector('.clear-all')
+const condition = document.querySelector("#condition")
 
 //class eventName {
 //    constructor(event) {
 //        this.createDiv(event)
 //    }
 //}
+const changeBtn = document.querySelector('.items')
 
 //event listeners
 addBtn.addEventListener('click', addHabit)
 habitList.addEventListener('click', deleteAction)
+changeBtn.addEventListener('click', colorChange)
+clearAll.addEventListener('click', removeAll)
 
 
 
+//function for changing color of the habits
+
+function colorChange(x) {
+ 
+  
+  const button = x.target
+  
+  if (button.classList[0]=== 'check') {
+    condition.textContent = "nice work!"
+    const color = button
+    color.classList.toggle('c')
+
+  } else {
+    const color = button
+    color.classList.remove('c')
+  }
+}
 
 
 /*
@@ -26,9 +48,9 @@ habitInput.addEventListener("keyup", addHabit)
    event.preventDefault();
    alert('ehue')
   }
+
+  
 */
-
-
 
 function addHabit(event){
     //prevent form from submitting
@@ -41,12 +63,14 @@ function addHabit(event){
     }else {
         errorEmpty.classList.add('hidden')
         //create a habit div
+     
        
         const habitDiv = document.createElement('div')
         habitDiv.classList.add('habits')
-        
+
+        //remove btn
         const trashHabit = document.createElement('button')
-        trashHabit.innerHTML = '<p class="removeBtn">-</p>'
+        trashHabit.innerHTML = '<p">-</p>'
         trashHabit.classList.add('trash-btn')
         habitDiv.appendChild(trashHabit)
 
@@ -57,25 +81,23 @@ function addHabit(event){
         habitDiv.appendChild(newHabit)
 
         //check 
- 
-
 
         //edit
-        const editHabit = document.createElement('button');
-    	  editHabit.classList.add('edit-btn')
-        editHabit.innerHTML = '<p class="editBtn">edit</p>'
-        habitDiv.appendChild(editHabit)
+        //const editHabit = document.createElement('button');
+    	  //editHabit.classList.add('edit-btn')
+        //editHabit.innerHTML = '<p class="editBtn">edit</p>'
+        //habitDiv.appendChild(editHabit)
 
         //checkboxes adding using inner HTML
 
         const checkHabit = document.createElement('row')
         checkHabit.innerHTML = 
-        '<div class= "row rowcolor"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div><button class="check"></button><button class="check"></button>'
+        '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
 
-
-        
         checkHabit.classList.add('table-check')
+        
         habitDiv.appendChild(checkHabit)
+
 
         //append to list
 
@@ -90,27 +112,32 @@ function addHabit(event){
 }
 
 
+
 //remove btn
 function deleteAction(e) {
   const item = e.target
   if (item.classList[0]=== 'trash-btn'){
       const habit = item.parentElement
+ 
       habit.remove()
   }
 }
 
+//remove all btn
+
+function removeAll() {
+  alert ('remove')
+}
+
+       //set count
 
 
 
-//function
-
-//list
-
-//element.insertAdjacentHTML(beforeend,text)
-
-
-
-
+function incr() { 
+  var v1=document.getElementById('p1').value;
+  document.getElementById("p1").value= v1 + 10;
+  }
+//weeks :
 
 var a = document.getElementById('btn');
 a.addEventListener('click', function() {
