@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/habit-tracker.css">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h3 class="title">habit tracker</h3>
+    </header>
+
+    <h2>
+        <div class="current-show">
+            <p id="date">
+                <p class="big-text" id="date"></p>
+            </p>
+        </div>
+    </h2>
+
+    <div class="inputDiv">
+
+
+
+        <table class='table'>
+            <tr>
+                <th class='table-habit'>Habit </th>
+                <td>Mon</td>
+                <td>Tue</td>
+                <td>Wed</td>
+                <td>Thu</td>
+                <td>Fri</td>
+                <td>Sat</td>
+                <td>Sun</td>
+            </tr>
+        </table>
+
+        <div class='items'>
+
+            <ul class='habit-list'></ul>
+
+            <div class='habits'>
+                <!--
+                  <table>
+                    <tr>
+                      <th>item</th>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                      <td><input type="checkbox"></td>
+                    </tr>
+                  </table>
+                  <li></li>
+                  <button class='editBtn'>edit</button>
+                  <button class='removeBtn'>remove</button>       -->
+
+            </div>
+        </div>
+
+        <form action="">
+            <div class='input'>
+                <input type="text" name='habit-input' class="habit-input" placeholder="habits..">
+
+                <button type='button' class="addBtn">add</button>
+                <div id="condition"></div>
+
+                <!--
+            <select name="repeatednr" id="repeatednr">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>                   
+          </select>-->
+
+                <input type="reset" value="Clear All" class='clear-all'>
+
+                <!--counter-->
+                <div class="counter-box">
+                    <h1 class="counter">0</h1>
+                    <div id="btns"></div>
+                    <button type="button" class="btn" id="lowerCountBtn">Lower Count </button>
+                    <button type="button" class="btn" id="addCountBtn">Add Count </button>
+                </div>
+                <!-- end counter-->
+
+                <progress value="0" max="100" id=p1>50%</progress>
+                <input type=button value='Increse' onClick='incr();'>
+
+                <p>Pick Color: <input type="color" name="color" required></p>
+            </div>
+
+    </div>
+    <div class='error hidden'>field cant be empty</div>
+
+    </form>
+
+    <!--I put below two items outsife the form for now-->
+    <!--section weeks-->
+    <div id="wrapper">
+        <h3>week section</h3>
+        <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
+        <button id="btn" class="btn">New week</button>
+    </div><br><br>
+    <!-- end section weeks-->
+
+    <!--Filter: can be added function later. can connect to weeks?-->
+    <div class="select">
+        <select name="todos" class="filter-todo">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="uncompleted">Uncompleted</option>
+        </select><br><br>
+        <!--Filter-->
+    </div>
+
+</body>
+
+<script src='habit-tracker.js'></script>
+
+</html>
