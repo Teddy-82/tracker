@@ -1,4 +1,3 @@
-
 // target from html
 const addBtn = document.querySelector('.addBtn')
 const habitInput = document.querySelector('.habit-input')
@@ -21,6 +20,13 @@ habitList.addEventListener('click', deleteAction)
 changeBtn.addEventListener('click', colorChange)
 clearAll.addEventListener('click', removeAll)
 
+
+
+document.addEventListener('keypress', function(enter) {
+  if (enter.keyCode === 13 || enter.which === 13) {
+    addHabit(event)
+  };
+});
 
 
 //function for changing color of the habits
@@ -48,7 +54,6 @@ habitInput.addEventListener("keyup", addHabit)
    event.preventDefault();
    alert('ehue')
   }
-
   
 */
 
@@ -70,7 +75,7 @@ function addHabit(event){
 
         //remove btn
         const trashHabit = document.createElement('button')
-        trashHabit.innerHTML = '<p">-</p>'
+        trashHabit.innerHTML = '<p class="removeBtn">-</p>'
         trashHabit.classList.add('trash-btn')
         habitDiv.appendChild(trashHabit)
 
@@ -108,7 +113,7 @@ function addHabit(event){
     
     //to clear the input after adding
     habitInput.value= ''
-    
+    condition.textContent = "there u go!"
 }
 
 
@@ -133,48 +138,42 @@ function removeAll() {
 
 
 
-function incr() { 
-  var v1=document.getElementById('p1').value;
-  document.getElementById("p1").value= v1 + 10;
-  }
-//weeks :
 
-var a = document.getElementById('btn');
-a.addEventListener('click', function() {
-  var section = document.createElement('section');
-  section.setAttribute('id', 1);
-  document.getElementById('wrapper').appendChild(section); 
-  var h3 = document.createElement('h3');
-  h3.innerText = document.getElementById('sectionText').value;
-  section.appendChild(h3);
-  var input = document.createElement('INPUT');
-  input.setAttribute('type', 'text')
-  section.appendChild(input);
-  var btn = document.createElement('button');
-  btn.innerText = 'New habit'
-  section.appendChild(btn);
-
-  btn.addEventListener('click', function() {
-    var div = document.createElement('div');
-    div.setAttribute('class', 'listItem');
-    var checkbox = document.createElement('INPUT');
-    checkbox.setAttribute('type', 'checkbox');
-    checkbox.setAttribute('id', 'checker');
-    div.appendChild(checkbox);
-    var span = document.createElement('span')
-    span.innerText = this.previousElementSibling.value;
-    div.appendChild(span);
-    input.parentNode.insertBefore(div, input);
+//counter
+let counter = document.querySelector('.counter');
+const addCount = document.querySelector('#addCountBtn');
+const lowerCount = document.querySelector('#lowerCountBtn');
 
 
-    const habitDiv = document.createElement('div')
-    habitDiv.setAttribute('class', 'listItem');
+let count = 0;
+
+
+addCount.addEventListener('click', incrementCounter);
+lowerCount.addEventListener('click', decrementCounter);
+
+function incrementCounter (){
+    count++;
+    counter.innerHTML =  count;
     
-    const trashHabit = document.createElement('button')
-    trashHabit.setAttribute('type', 'button');
-    trashHabit.setAttribute('id', 'checker');
-    habitDiv.appendChild(trashHabit)
+}
 
-  }, false);
-})
+function incrementCounter (){
+    count++;
+    counter.innerHTML =  count;
+    if(counter.innerHTML>'1'){
+        counter.style.color = 'white'
+    }
+    
+    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
+}
+;
 
+function decrementCounter (){
+    count--;
+    counter.innerHTML =  count;
+    if(counter.innerHTML<'1'){
+        count++
+    }
+  
+    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
+}

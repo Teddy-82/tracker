@@ -29,12 +29,14 @@ html {
     
 }
 
-header, form {
+header,form {
     min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 
 .table {
     margin-left:auto; 
@@ -95,8 +97,22 @@ header, form {
     cursor: pointer;
   }
 
+.input {
+    margin-top: 3em;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+
+}
+.habit-input, .addBtn, .clear-all {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 .habit-input{
-   
+
   width: 60%;
   border: 0;
   border-bottom: .1em solid gray;
@@ -135,18 +151,19 @@ input::placeholder {
     cursor: pointer;
 }
 
+.table-check {
+    float: left;
+   transform: translate(8%);
+}
 
 .items {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
-.habit-list {
-    min-width: 10%;
-    list-style: none;
-    
-}
+
 
 .habits {
     display: flex;
@@ -167,7 +184,7 @@ input::placeholder {
     height: 2.5em;
     border-radius: 50%;
     border: none;
- 
+    
   
 }
 
@@ -180,28 +197,33 @@ input::placeholder {
 }
 
 
+
 #condition {
     width: 50%;
     color: #858585;
     font-size: 12px;
     position: absolute;
-    top: 30%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     }
 
   .check {
+      cursor: pointer;
       background-color: rgb(183, 182, 182);
   }
 
   .c {
       background-color: teal;
+      cursor: pointer;
    
   }
+
 
   .d{
     background-color: teal;
    
   }
+
 
 

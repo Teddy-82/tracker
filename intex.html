@@ -15,6 +15,7 @@
   <header>
     <h3 class="title">habit tracker</h3>
 </header>
+<div id="condition"></div>
 
     <h2>
         <div class="current-show">
@@ -26,15 +27,7 @@
 
     <div class="inputDiv">
 
-                  <!--section weeks-->
 
-                  <div id="wrapper">
-                    <h3>week section</h3>
-                    <input type="text" id="sectionText" class="sectionText" placeholder="week.." />
-                    <button id="btn" class="btn">New week</button>
-                </div>
-    
-                <!-- end section weeks-->
         <table class='table'>
             <tr>
                 <th class='table-habit'>Habit </th>
@@ -80,10 +73,10 @@
 
         <form action="">
         <div class='input'>
-            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." >
+            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." maxlength="15">
             
             <button type='button' class="addBtn">add</button>
-            <div id="condition"></div>
+            
             
              <!--
             <select name="repeatednr" id="repeatednr">
@@ -105,8 +98,8 @@
        
             <h1 class="counter">0</h1>
             <div id="btns"></div>
-            <button type="button" class="btn" id="lowerCountBtn">Lower Count </button>
-            <button type="button" class="btn" id="addCountBtn">Add Count </button>
+            <button type="button" class="btn" id="lowerCountBtn">- </button>
+            <button type="button" class="btn" id="addCountBtn">+ </button>
         </div>
          <!-- end counter-->
 
@@ -117,9 +110,7 @@
         </div>
      
     </div>
-    <div class='error hidden'>field cant be empty</div>
-   
-       
+    <div class='error hidden'>We both know you should be doing something right now. Please enter a task.</div>
 
 </form>
 </body>
