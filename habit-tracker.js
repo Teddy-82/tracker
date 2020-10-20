@@ -15,32 +15,33 @@ const condition = document.querySelector("#condition")
 const changeBtn = document.querySelector('.items')
 
 //event listeners
+document.addEventListener('DOMContentLoaded', getHabits)
 addBtn.addEventListener('click', addHabit)
 habitList.addEventListener('click', deleteAction)
 changeBtn.addEventListener('click', colorChange)
 clearAll.addEventListener('click', removeAll)
 
 document.addEventListener('keypress', function(enter) {
-  if (enter.keyCode === 13 || enter.which === 13) {
-    addHabit(event)
-  };
+    if (enter.keyCode === 13 || enter.which === 13) {
+        addHabit(event)
+    };
 });
 
 //function for changing color of the habits
 
 function colorChange(x) {
-   
-  const button = x.target
-  
-  if (button.classList[0]=== 'check') {
-    //MSG///*condition.textContent = "nice work!"*///TEMPORARY HIDING//
-    const color = button
-    color.classList.toggle('c')
 
-  } else {
-    const color = button
-    color.classList.remove('c')
-  }
+    const button = x.target
+
+    if (button.classList[0] === 'check') {
+        //MSG///*condition.textContent = "nice work!"*/
+        const color = button
+        color.classList.toggle('c')
+
+    } else {
+        const color = button
+        color.classList.remove('c')
+    }
 }
 
 /*
@@ -52,22 +53,22 @@ habitInput.addEventListener("keyup", addHabit)
   
 */
 
-function addHabit(event){
+function addHabit(event) {
     //prevent form from submitting
     event.preventDefault()
 
     //if the field is empty
-    if (habitInput.value === '' ) {
+    if (habitInput.value === '') {
         errorEmpty.classList.remove('hidden')
-    
-    }else {
+
+    } else {
         errorEmpty.classList.add('hidden')
-        //create a habit div
-     
+            //create a habit div
+
         const habitDiv = document.createElement('div')
         habitDiv.classList.add('habits')
 
-        //remove btn
+        //trash btn
         const trashHabit = document.createElement('button')
         trashHabit.innerHTML = '<p class="removeBtn">-</p>'
         trashHabit.classList.add('trash-btn')
@@ -81,48 +82,47 @@ function addHabit(event){
 
         //ADD HABIT TO LOCAL STORAGE
         saveLocalHabits(habitInput.value);
-      
+
         //check 
 
         //edit
         //const editHabit = document.createElement('button');
-    	  //editHabit.classList.add('edit-btn')
+        //editHabit.classList.add('edit-btn')
         //editHabit.innerHTML = '<p class="editBtn">edit</p>'
         //habitDiv.appendChild(editHabit)
 
         //checkboxes adding using inner HTML
 
         const checkHabit = document.createElement('row')
-        checkHabit.innerHTML = 
-        '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
+        checkHabit.innerHTML =
+            '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
 
         checkHabit.classList.add('table-check')
-        
         habitDiv.appendChild(checkHabit)
 
         //append to list
+        habitList.appendChild(habitDiv)
+    }
 
-        habitList.appendChild(habitDiv)     
-    }  
-    
     //to clear the input after adding
-    habitInput.value= ''
-    //MSG///*condition.textContent = "there u go!"*///TEMPORARY HIDING//
+    habitInput.value = '';
+    //MSG///*condition.textContent = "there u go!"*/
 }
 
 //remove btn
 function deleteAction(e) {
-  const item = e.target
-  if (item.classList[0]=== 'trash-btn'){
-      const habit = item.parentElement
- 
-      habit.remove()
-  }
+    const item = e.target
+    if (item.classList[0] === 'trash-btn') {
+        const habit = item.parentElement
+
+        habit.remove()
+    }
 }
 
 //remove all btn
+
 function removeAll() {
-  alert ('remove')
+    alert('remove')
 }
 
 //set count
@@ -137,30 +137,29 @@ let count = 0;
 addCount.addEventListener('click', incrementCounter);
 lowerCount.addEventListener('click', decrementCounter);
 
-function incrementCounter (){
+function incrementCounter() {
     count++;
-    counter.innerHTML =  count;   
+    counter.innerHTML = count;
 }
 
-function incrementCounter (){
+function incrementCounter() {
     count++;
-    counter.innerHTML =  count;
-    if(counter.innerHTML>'1'){
+    counter.innerHTML = count;
+    if (counter.innerHTML > '1') {
         counter.style.color = 'white'
     }
-    
-    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
-}
-;
 
-function decrementCounter (){
+    counter.animate([{ opacity: '0.2' }, { opacity: '1.0' }], { duration: 1000, fill: 'forwards' })
+};
+
+function decrementCounter() {
     count--;
-    counter.innerHTML =  count;
-    if(counter.innerHTML<'1'){
+    counter.innerHTML = count;
+    if (counter.innerHTML < '1') {
         count++
     }
-  
-    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
+
+    counter.animate([{ opacity: '0.2' }, { opacity: '1.0' }], { duration: 1000, fill: 'forwards' })
 }
 
 function saveLocalHabits(habit) {
@@ -174,4 +173,52 @@ function saveLocalHabits(habit) {
 
     habits.push(habit);
     localStorage.setItem('habits', JSON.stringify(habits));
+}
+
+function getHabits() {
+    //CHECK IF I ALREADY HAVE THINGS IN THERE
+    let habits;
+    if (localStorage.getItem('habits') === null) {
+        habits = [];
+    } else {
+        habits = JSON.parse(localStorage.getItem('habits'));
+    }
+
+    habits.forEach(function(habit) {
+        //if the field is empty
+        if (habitInput.value === '') {
+            errorEmpty.classList.remove('hidden')
+
+        } else {
+
+        }
+        errorEmpty.classList.add('hidden')
+            //create a habit div
+
+        const habitDiv = document.createElement('div')
+        habitDiv.classList.add('habits')
+
+        //trash btn
+        const trashHabit = document.createElement('button')
+        trashHabit.innerHTML = '<p class="removeBtn">-</p>'
+        trashHabit.classList.add('trash-btn')
+        habitDiv.appendChild(trashHabit)
+
+        //create li
+        const newHabit = document.createElement('li')
+        newHabit.innerText = habit
+        newHabit.classList.add('habit-item')
+        habitDiv.appendChild(newHabit)
+
+        //checkboxes adding using inner HTML
+        const checkHabit = document.createElement('row')
+        checkHabit.innerHTML =
+            '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
+
+        checkHabit.classList.add('table-check')
+        habitDiv.appendChild(checkHabit)
+
+        //append to list
+        habitList.appendChild(habitDiv)
+    });
 }
