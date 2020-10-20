@@ -177,3 +177,5 @@ function decrementCounter (){
   
     counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
 }
+
+test
