@@ -115,6 +115,7 @@ function deleteAction(e) {
     if (item.classList[0] === 'trash-btn') {
         const habit = item.parentElement
 
+        removeLocalHabits(habit);
         habit.remove()
     }
 }
@@ -221,4 +222,16 @@ function getHabits() {
         //append to list
         habitList.appendChild(habitDiv)
     });
+}
+
+function removeLocalHabits(habit) {
+    let habits;
+    if (localStorage.getItem('habits') === null) {
+        habits = [];
+    } else {
+        habits = JSON.parse(localStorage.getItem('habits'));
+    }
+    const habitIndex = habit.children[0].innderText;
+    habits.splice(habits.indexOf(habitIndex), 1);
+    localStorage.setItem('habits', JSON.stringify(habits));
 }
