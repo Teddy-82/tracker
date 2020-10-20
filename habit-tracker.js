@@ -20,24 +20,20 @@ habitList.addEventListener('click', deleteAction)
 changeBtn.addEventListener('click', colorChange)
 clearAll.addEventListener('click', removeAll)
 
-
-
 document.addEventListener('keypress', function(enter) {
   if (enter.keyCode === 13 || enter.which === 13) {
     addHabit(event)
   };
 });
 
-
 //function for changing color of the habits
 
 function colorChange(x) {
- 
-  
+   
   const button = x.target
   
   if (button.classList[0]=== 'check') {
-    condition.textContent = "nice work!"
+    //MSG///*condition.textContent = "nice work!"*///TEMPORARY HIDING//
     const color = button
     color.classList.toggle('c')
 
@@ -46,7 +42,6 @@ function colorChange(x) {
     color.classList.remove('c')
   }
 }
-
 
 /*
 habitInput.addEventListener("keyup", addHabit) 
@@ -69,7 +64,6 @@ function addHabit(event){
         errorEmpty.classList.add('hidden')
         //create a habit div
      
-       
         const habitDiv = document.createElement('div')
         habitDiv.classList.add('habits')
 
@@ -85,6 +79,9 @@ function addHabit(event){
         newHabit.classList.add('habit-item')
         habitDiv.appendChild(newHabit)
 
+        //ADD HABIT TO LOCAL STORAGE
+        saveLocalHabits(habitInput.value);
+      
         //check 
 
         //edit
@@ -103,20 +100,15 @@ function addHabit(event){
         
         habitDiv.appendChild(checkHabit)
 
-
         //append to list
 
-        habitList.appendChild(habitDiv)
-
-        
+        habitList.appendChild(habitDiv)     
     }  
     
     //to clear the input after adding
     habitInput.value= ''
-    condition.textContent = "there u go!"
+    //MSG///*condition.textContent = "there u go!"*///TEMPORARY HIDING//
 }
-
-
 
 //remove btn
 function deleteAction(e) {
@@ -129,32 +121,25 @@ function deleteAction(e) {
 }
 
 //remove all btn
-
 function removeAll() {
   alert ('remove')
 }
 
-       //set count
-
-
-
+//set count
 
 //counter
 let counter = document.querySelector('.counter');
 const addCount = document.querySelector('#addCountBtn');
 const lowerCount = document.querySelector('#lowerCountBtn');
 
-
 let count = 0;
-
 
 addCount.addEventListener('click', incrementCounter);
 lowerCount.addEventListener('click', decrementCounter);
 
 function incrementCounter (){
     count++;
-    counter.innerHTML =  count;
-    
+    counter.innerHTML =  count;   
 }
 
 function incrementCounter (){
@@ -178,4 +163,15 @@ function decrementCounter (){
     counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
 }
 
-test
+function saveLocalHabits(habit) {
+    //CHECK IF I ALREADY HAVE THINGS IN THERE
+    let habits;
+    if (localStorage.getItem('habits') === null) {
+        habits = [];
+    } else {
+        habits = JSON.parse(localStorage.getItem('habits'));
+    }
+
+    habits.push(habit);
+    localStorage.setItem('habits', JSON.stringify(habits));
+}
