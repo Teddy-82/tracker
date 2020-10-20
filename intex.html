@@ -25,6 +25,23 @@
         </div>
     </h2>
 
+<!--
+    <div class="all-tasks">
+        <h2 class="task-list-title">My lists</h2>
+        <ul class="task-list" data-lists></ul>
+  
+        <form action="" data-new-list-form>
+          <input 
+            type="text"
+            class="new list"
+            data-new-list-input
+            placeholder="new list name"
+            aria-label="new list name"
+          />
+          <button class="btn create" aria-label="create new list">+</button>
+        </form>
+      </div>
+-->
     <div class="inputDiv">
 
 
@@ -73,46 +90,39 @@
 
         <form action="">
         <div class='input'>
-            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." maxlength="15">
+            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." >
             
             <button type='button' class="addBtn">add</button>
             
-            
-             <!--
-            <select name="repeatednr" id="repeatednr">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>                   
-          </select>
--->
+
 
 
           <input type="reset" value="Clear All" class='clear-all'>
-         
-          <!--counter-->
+                   <!--counter
           <div class="counter-box">
        
-            <h1 class="counter">0</h1>
+            <h3 class="counter">0</h3>
             <div id="btns"></div>
             <button type="button" class="btn" id="lowerCountBtn">- </button>
             <button type="button" class="btn" id="addCountBtn">+ </button>
         </div>
+        -->
          <!-- end counter-->
 
-          <progress value="0" max="100" id=p1>50%</progress>
-<input type=button value='Increse' onClick='incr();'>
-
-          <p>Pick Color: <input type="color" name="color" required></p>
         </div>
      
     </div>
     <div class='error hidden'>We both know you should be doing something right now. Please enter a task.</div>
 
+    <h4 id="week"></h5>
+
+
+
 </form>
+
+
+
+
 </body>
 
 <script src='habit-tracker.js'></script>

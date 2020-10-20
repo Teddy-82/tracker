@@ -1,3 +1,7 @@
+//main list
+
+
+
 // target from html
 const addBtn = document.querySelector('.addBtn')
 const habitInput = document.querySelector('.habit-input')
@@ -7,21 +11,34 @@ const newWeek = document.querySelector('.btn')
 const clearAll = document.querySelector('.clear-all')
 const condition = document.querySelector("#condition")
 
-//class eventName {
-//    constructor(event) {
-//        this.createDiv(event)
-//    }
-//}
+
 const changeBtn = document.querySelector('.items')
 
+
+//local storage
+document.addEventListener('DOMContentLoaded', getHabits)
 //event listeners
+
 addBtn.addEventListener('click', addHabit)
 habitList.addEventListener('click', deleteAction)
 changeBtn.addEventListener('click', colorChange)
 clearAll.addEventListener('click', removeAll)
 
+//remove all btn
 
+function removeAll(e) {
+  const item = e.target
+  const removeBtn = document.querySelector('.items')
+  const habit = item.parentElement
 
+  removeAllHabits(habit)
+  
+  removeBtn.innerHTML = '';
+    // Clear items on local storage array
+  
+}
+
+//hit enter insead of add btn
 document.addEventListener('keypress', function(enter) {
   if (enter.keyCode === 13 || enter.which === 13) {
     addHabit(event)
@@ -33,29 +50,23 @@ document.addEventListener('keypress', function(enter) {
 
 function colorChange(x) {
  
-  
   const button = x.target
   
   if (button.classList[0]=== 'check') {
     condition.textContent = "nice work!"
     const color = button
     color.classList.toggle('c')
+    const habit = button.parentElement
+    saveButtons(habit)
 
   } else {
     const color = button
     color.classList.remove('c')
   }
+ 
 }
 
-
-/*
-habitInput.addEventListener("keyup", addHabit) 
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   alert('ehue')
-  }
-  
-*/
+//function for adding habits
 
 function addHabit(event){
     //prevent form from submitting
@@ -85,6 +96,9 @@ function addHabit(event){
         newHabit.classList.add('habit-item')
         habitDiv.appendChild(newHabit)
 
+
+         //ADD HABIT TO LOCAL STORAGE
+        saveLocalHabits(habitInput.value);
         //check 
 
         //edit
@@ -95,6 +109,7 @@ function addHabit(event){
 
         //checkboxes adding using inner HTML
 
+        //creates the row of buttons
         const checkHabit = document.createElement('row')
         checkHabit.innerHTML = 
         '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
@@ -102,7 +117,6 @@ function addHabit(event){
         checkHabit.classList.add('table-check')
         
         habitDiv.appendChild(checkHabit)
-
 
         //append to list
 
@@ -114,6 +128,7 @@ function addHabit(event){
     //to clear the input after adding
     habitInput.value= ''
     condition.textContent = "there u go!"
+    
 }
 
 
@@ -123,57 +138,166 @@ function deleteAction(e) {
   const item = e.target
   if (item.classList[0]=== 'trash-btn'){
       const habit = item.parentElement
- 
+
+      
+      condition.textContent = "hope youre not cheating..!"
       habit.remove()
+      removeLocalHabits(habit);
   }
+
+
 }
 
-//remove all btn
+//set count
 
-function removeAll() {
-  alert ('remove')
+//counter in list
+
+
+//local storage
+function saveLocalHabits(habit) {
+  //CHECK IF I ALREADY HAVE THINGS IN THERE
+  let habits;
+  if (localStorage.getItem('habits') === null) {
+      habits = [];
+  } else {
+    //assuming that stuff exist, parse it back to an array
+      habits = JSON.parse(localStorage.getItem('habits'));
+  }
+
+  habits.push(habit);
+  //set it back into local Storage
+  localStorage.setItem('habits', JSON.stringify(habits));
 }
 
-       //set count
+function getHabits() {
+  //CHECK IF I ALREADY HAVE THINGS IN THERE
+  let habits;
+  if (localStorage.getItem('habits') === null) {
+      habits = [];
+  } else {
+      habits = JSON.parse(localStorage.getItem('habits'));
+  }
 
+//loop over them
+  habits.forEach(function(habit) {
+      //if the field is empty
+      if (habitInput.value === '') {
+          errorEmpty.classList.remove('hidden')
 
+      } else {
 
+      }
+      errorEmpty.classList.add('hidden')
+          //create a habit div
 
-//counter
-let counter = document.querySelector('.counter');
-const addCount = document.querySelector('#addCountBtn');
-const lowerCount = document.querySelector('#lowerCountBtn');
+      const habitDiv = document.createElement('div')
+      habitDiv.classList.add('habits')
 
+      //trash btn
+      const trashHabit = document.createElement('button')
+      trashHabit.innerHTML = '<p class="removeBtn">-</p>'
+      trashHabit.classList.add('trash-btn')
+      habitDiv.appendChild(trashHabit)
 
-let count = 0;
+      //create li
+      const newHabit = document.createElement('li')
+      newHabit.innerText = habit
+      newHabit.classList.add('habit-item')
+      habitDiv.appendChild(newHabit)
 
+      //checkboxes adding using inner HTML
+      const checkHabit = document.createElement('row')
+      checkHabit.innerHTML =
+          '<div class= "selected"><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button><button class="check"></button></div>'
 
-addCount.addEventListener('click', incrementCounter);
-lowerCount.addEventListener('click', decrementCounter);
+      checkHabit.classList.add('table-check')
+      habitDiv.appendChild(checkHabit)
 
-function incrementCounter (){
-    count++;
-    counter.innerHTML =  count;
-    
+      //append to list
+      habitList.appendChild(habitDiv)
+  });
 }
 
-function incrementCounter (){
-    count++;
-    counter.innerHTML =  count;
-    if(counter.innerHTML>'1'){
-        counter.style.color = 'white'
-    }
-    
-    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
-}
-;
+function saveButtons(habit) {
+  let habits;
+  if (localStorage.getItem('habits') === null) {
+      habits = [];
+  } else {
+      habits = JSON.parse(localStorage.getItem('habits'));
+  }
+  //save buttons in local storage
+  const habitIndex = (habit.classList[0]=== 'check'.innerText)
+  //habits.classList(habits.indexOf(habitIndex) ,1);
+  localStorage.setItem('habits', JSON.stringify(habits));
 
-function decrementCounter (){
-    count--;
-    counter.innerHTML =  count;
-    if(counter.innerHTML<'1'){
-        count++
-    }
+}
+/*
+function colorChange(x) {
+ 
+  const button = x.target
   
-    counter.animate([{opacity:'0.2'},{opacity:'1.0'}], {duration: 1000, fill:'forwards'})
+  if (button.classList[0]=== 'check') {
+    condition.textContent = "nice work!"
+    const color = button
+    color.classList.toggle('c')
+    saveLocalHabits(habit)
+
+  } else {
+    const color = button
+    color.classList.remove('c')
+  }
+ 
 }
+*/
+function removeLocalHabits(habit) {
+  let habits;
+  if (localStorage.getItem('habits') === null) {
+      habits = [];
+  } else {
+      habits = JSON.parse(localStorage.getItem('habits'));
+  }
+  const habitIndex = (habit.children[1].innerText)
+  habits.splice(habits.indexOf(habitIndex) ,1);
+  localStorage.setItem('habits', JSON.stringify(habits));
+
+}
+
+function removeAllHabits(habit) {
+  let habits;
+  if (localStorage.getItem('habits') === null) {
+      habits = [];
+  } else {
+      habits = JSON.parse(localStorage.getItem('habits'));
+  }
+  const habitIndex = (habit.children[0].innerText)
+  habits.pop(habits.indexOf(habitIndex.length));
+  localStorage.setItem('habits', JSON.stringify(habits));
+
+}
+
+
+//get week
+const weekElement = document.getElementById('week')
+
+
+function getWeekNumber(d) {
+
+  d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+  var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+  var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+
+  return [d.getUTCFullYear(), weekNo];
+}
+
+var result = getWeekNumber(new Date());
+
+
+
+weekElement.innerHTML='week ' + result[1] + ' of ' + result[0]
+
+
+
+
+
