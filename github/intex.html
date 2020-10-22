@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="/habit-tracker.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 
- 
-
 </head>
 
 <body>
-  <header>
-    <h3 class="title">habit tracker</h3>
-</header>
-<div id="condition"></div>
+    <header>
+        <h3 class="title">habit tracker</h3>
+    </header>
+    <div id="condition"></div>
 
     <h2>
         <div class="current-show">
@@ -25,7 +23,7 @@
         </div>
     </h2>
 
-<!--
+    <!--
     <div class="all-tasks">
         <h2 class="task-list-title">My lists</h2>
         <ul class="task-list" data-lists></ul>
@@ -48,7 +46,7 @@
         <table class='table'>
             <tr>
                 <th class='table-habit'>Habit </th>
-                
+
                 <td>Mon</td>
                 <td>Tue</td>
                 <td>Wed</td>
@@ -89,107 +87,46 @@
         </div>
 
         <form action="">
-        <div class='input'>
-            <input type="text" name='habit-input' class="habit-input" placeholder="habits.." maxlength="15">
-            
-            <button type='button' class="addBtn">add</button>
-            
-            
-             <!--
-            <select name="repeatednr" id="repeatednr">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>                   
-          </select>
--->
+            <div class='input'>
+                <div class="habit-task">
+                    <input type="text" id='habit-input' me='habit-input' class="habit-input" placeholder="habits..">
+                    <button type='button' class="addBtn">add</button>
+                    <input type="reset" value="Clear All" class=' clear-all ' />
+                </div>
+                <div class="color-box ">
+                    <button type='button' id="btn-color " class="btn-color ">AddColor</button>
+                    <p>Pick Color:
+                        <input type="color" id="favcolor" name="favcolor" value="#ff0000" /> </p>
+                </div>
 
-
-          <input type="reset" value="Clear All" class='clear-all'>
-         
-          <!--counter-->
+                <!--counter
           <div class="counter-box">
        
-            <h1 class="counter">0</h1>
+            <h3 class="counter">0</h3>
             <div id="btns"></div>
             <button type="button" class="btn" id="lowerCountBtn">- </button>
             <button type="button" class="btn" id="addCountBtn">+ </button>
         </div>
-         <!-- end counter-->
+        -->
+                <!-- end counter-->
 
-          <progress value="0" max="100" id=p1>50%</progress>
-<input type=button value='Increse' onClick='incr();'>
+            </div>
 
-          <p>Pick Color: <input type="color" name="color" required></p>
-        </div>
-     
     </div>
-    <div class='error hidden'>We both know you should be doing something right now. Please enter a task.</div>
+    <div class='error hidden '>We both know you should be doing something right now. Please enter a task.</div>
 
-</form>
-<!--new stuff-->
-<h1 class="title">Stuff I need to do</h1>
-<!---->
-    <div class="all-tasks">
-      <h2 class="task-list-title">My lists</h2>
-      <ul class="task-list" data-lists></ul>
+    <h4 id="week">
+        </h5>
 
-      <form action="" data-new-list-form>
-        <input 
-          type="text"
-          class="new list"
-          data-new-list-input
-          placeholder="new list name"
-          aria-label="new list name"
-        />
-        <button class="btn create" aria-label="create new list">+</button>
-      </form>
-    </div>
 
-    <div class="todo-list" data-list-display-container>
-      <div class="todo-header">
-        <h2 class="list-title" data-list-title>YouTube</h2>
-        <p class="task-count" data-list-count>3 tasks remaining</p>
-      </div>
 
-      <div class="todo-body">
-        <div class="tasks" data-tasks></div>
+        </form>
 
-        <div class="new-task-creator">
-            <form action="" data-new-task-form>
-                <input 
-                  type="text"
-                  data-new-task-input
-                  class="new task"
-                  placeholder="new task name"
-                  aria-label="new task name"
-                />
-                <button class="btn create" aria-label="create new task">+</button>
-              </form>
-        </div>
 
-        <div class="delete-stuff">
-          <button class="btn delete" data-clear-complete-tasks-button>Clear completed tasks</button>
-          <button class="btn delete" data-delete-list-button>Delete list</button>
-        </div>
-      </div>
-    </div>
 
-   
-    </div>
-    <template id="task-template">
-      <div class="task">
-        <input type="checkbox" />
-        <label>
-          <span class="custom-checkbox"></span>
-        </label>
-      </div>
-    </template>
+
 </body>
 
-<script src='habit-tracker.js'></script>
+<script src='habit-tracker.js '></script>
 
 </html>
